@@ -9,9 +9,9 @@ const Footer = () => {
         >
             <div className="row pt-5">
                 <div className="col-md-4 offset-md-1">
-                    <h3>
+                    <h4>
                         Let us handle your <br /> project professionally{" "}
-                    </h3>
+                    </h4>
                     <p>
                         with well written codes, we build amazing apps for all
                         platforms, mobile and web apps in general
