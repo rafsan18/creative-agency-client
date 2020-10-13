@@ -1,0 +1,17 @@
+.header-container {
+    background-color: #fbd062;
+    height: 700px;
+    overflow: hidden;
+}
+
+/* .header-container:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 200px 100vw;
+    position: absolute;
+    top: 596px;
+    border-color: transparent transparent #fff transparent;
+} */
