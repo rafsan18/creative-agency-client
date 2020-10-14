@@ -21,7 +21,7 @@ const CompletedWorks = () => {
         arrows: false,
     };
     return (
-        <div className="my-5 p-5 carousel-container  ">
+        <div className="mb-5 p-5 carousel-container  ">
             <h3 className="text-white text-center my-5 pb-5">
                 Here are some of <span className="text-brand">our works</span>{" "}
             </h3>

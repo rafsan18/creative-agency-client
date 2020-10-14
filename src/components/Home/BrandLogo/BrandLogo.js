@@ -9,8 +9,8 @@ import "./BrandLogo.css";
 const BrandLogo = () => {
     return (
         <div
-            className="w-100 d-flex align-items-center justify-content-center my-5"
-            style={{ height: "100px" }}
+            className="w-100 d-flex align-items-center justify-content-center  bg-light"
+            style={{ height: "100px", padding: "100px 0" }}
         >
             <div className="row w-75 brand-img-container">
                 <div className="col-md-1"></div>

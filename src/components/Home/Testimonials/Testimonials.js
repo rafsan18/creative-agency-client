@@ -37,7 +37,7 @@ const Testimonials = () => {
             <h3 className="text-center my-5 py-5">
                 Clients <span className="text-brand">Feedback</span>{" "}
             </h3>
-            <div className="row w-75 justify-content-around m-auto pb-5">
+            <div className="row w-75  m-auto ">
                 {clientsInfo.map((clientInfo) => (
                     <Testimonial
                         key={clientInfo.id}
