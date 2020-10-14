@@ -21,9 +21,9 @@ const CompletedWorks = () => {
         arrows: false,
     };
     return (
-        <div className="mb-5 p-5 carousel-container  ">
+        <div className="mb-5 py-5 carousel-container  ">
             <h3 className="text-white text-center my-5 pb-5">
-                Here are some of <span className="text-brand">our works</span>{" "}
+                Here are some of <span className="text-brand">our works</span>
             </h3>
             <Slider className="mt-5" {...settings}>
                 <div>
