@@ -1,5 +1,6 @@
 .service-card:hover {
     background-color: #fff;
-    transform: scale(1.1);
-    transition: transform 1s ease-in-out;
+    -webkit-box-shadow: 14px 10px 43px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 14px 10px 43px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 14px 10px 43px -6px rgba(0, 0, 0, 0.75);
 }
