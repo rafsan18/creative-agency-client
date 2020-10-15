@@ -6,7 +6,7 @@ import "./AddServices.css";
 
 const AddServices = () => {
     const [serviceInfo, setServiceInfo] = useState({});
-    const [serviceImg, setServiceImg] = useState(null);
+    const [file, setFile] = useState(null);
 
     const handleBlur = (e) => {
         const newServiceInfo = { ...serviceInfo };
@@ -15,13 +15,13 @@ const AddServices = () => {
     };
 
     const handleImgUpload = (e) => {
-        const newImg = e.target.files[0];
-        setServiceImg(newImg);
+        const newFile = e.target.files[0];
+        setFile(newFile);
     };
 
     const handleSubmit = (e) => {
         const formData = new FormData();
-        formData.append("image", serviceImg);
+        formData.append("file", file);
         formData.append("title", serviceInfo.title);
         formData.append("description", serviceInfo.description);
 
