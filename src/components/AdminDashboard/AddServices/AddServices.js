@@ -5,19 +5,47 @@ import AdminSidebar from "../AdminSidebar/AdminSidebar";
 import "./AddServices.css";
 
 const AddServices = () => {
-    const [service, setService] = useState({});
+    const [serviceInfo, setServiceInfo] = useState({});
+    const [serviceImg, setServiceImg] = useState(null);
 
-    const handleSubmit = () => {
-        console.log("form submit");
+    const handleBlur = (e) => {
+        const newServiceInfo = { ...serviceInfo };
+        newServiceInfo[e.target.name] = e.target.value;
+        setServiceInfo(newServiceInfo);
     };
-    const handleClick = () => {
-        handleSubmit();
+
+    const handleImgUpload = (e) => {
+        const newImg = e.target.files[0];
+        setServiceImg(newImg);
     };
+
+    const handleSubmit = (e) => {
+        const formData = new FormData();
+        formData.append("image", serviceImg);
+        formData.append("title", serviceInfo.title);
+        formData.append("description", serviceInfo.description);
+
+        fetch("http://localhost:5000/addAService", {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        e.preventDefault();
+    };
+
     return (
         <div className="row no-gutters container-fluid p-0">
             <div className=" col-xl-2 col-md-3 col-sm-4 col-12">
                 <AdminSidebar></AdminSidebar>
             </div>
+
             <div className="col-xl-10 col-md-9 col-sm-8 col-12">
                 <h3 className="my-4 mx-5">Add Services</h3>
                 <div
@@ -36,8 +64,10 @@ const AddServices = () => {
                                     </label>
                                     <input
                                         type="text"
+                                        name="title"
                                         className="form-control"
                                         placeholder="Enter title"
+                                        onBlur={handleBlur}
                                     />
                                 </div>
 
@@ -46,9 +76,11 @@ const AddServices = () => {
                                         Description
                                     </label>
                                     <textarea
+                                        name="description"
                                         className="form-control"
                                         placeholder="Enter Description"
                                         rows="5"
+                                        onBlur={handleBlur}
                                     ></textarea>
                                 </div>
                             </div>
@@ -62,6 +94,7 @@ const AddServices = () => {
                                         <input
                                             type="file"
                                             className="form-control-file"
+                                            onChange={handleImgUpload}
                                         />
                                         <FontAwesomeIcon
                                             icon={faCloudUploadAlt}
@@ -74,7 +107,6 @@ const AddServices = () => {
                         </div>
                         <button
                             className="btn btn-success submit-btn offset-md-10 mt-3"
-                            onClick={handleClick}
                             type="submit"
                         >
                             Submit
