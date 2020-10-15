@@ -11,7 +11,7 @@ const trans = (x, y, s) =>
     `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 const Service = ({ service }) => {
-    const { img, title, brief } = service;
+    const { image, title, description } = service;
     const [props, set] = useSpring(() => ({
         xys: [0, 0, 1],
         config: {
@@ -33,10 +33,23 @@ const Service = ({ service }) => {
                     transform: props.xys.interpolate(trans),
                 }}
             >
-                <div className="d-flex flex-column ">
-                    <img src={img} className="w-25 py-3   m-auto" alt="" />
+                <div className="d-flex flex-column px-3 ">
+                    {service.image ? (
+                        <img
+                            src={`data:image/png;base64,${image.img}`}
+                            className="w-25 py-3   m-auto"
+                            alt=""
+                        />
+                    ) : (
+                        <img
+                            src={image}
+                            className="w-25 py-3   m-auto"
+                            alt=""
+                        />
+                    )}
+
                     <h5 className="text-center">{title}</h5>
-                    <p className="text-center text-secondary">{brief}</p>
+                    <p className="text-center text-secondary">{description}</p>
                 </div>
             </animated.div>
         </div>

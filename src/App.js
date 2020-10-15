@@ -7,6 +7,9 @@ import Login from "./components/Login/Login/Login";
 import ServiceList from "./components/AdminDashboard/ServiceList/ServiceList";
 import AddServices from "./components/AdminDashboard/AddServices/AddServices";
 import MakeAdmin from "./components/AdminDashboard/MakeAdmin/MakeAdmin";
+import OrderForm from "./components/ClientDashboard/OrderForm/OrderForm";
+import OrderedList from "./components/ClientDashboard/OrderedList/OrderedList";
+import ReviewForm from "./components/ClientDashboard/ReviewForm/ReviewForm";
 
 export const UserContext = createContext();
 
@@ -34,6 +37,15 @@ function App() {
                     </Route>
                     <Route path="/adminDashboard/makeAdmin">
                         <MakeAdmin />
+                    </Route>
+                    <Route path="/clientDashboard/orderForm">
+                        <OrderForm />
+                    </Route>
+                    <Route path="/clientDashboard/orderedList">
+                        <OrderedList />
+                    </Route>
+                    <Route path="/clientDashboard/reviewForm">
+                        <ReviewForm />
                     </Route>
                     <Route path="*">
                         <NotMatch />
