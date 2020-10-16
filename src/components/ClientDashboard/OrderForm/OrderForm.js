@@ -1,9 +1,23 @@
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ClientSidebar from "../ClientSidebar/ClientSidebar";
 
 const OrderForm = () => {
+    const [selectedService, setSelectedService] = useState({});
+    const { serviceId } = useParams();
+
+    const { _id, title, description, image } = selectedService;
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/service/${serviceId}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setSelectedService(data);
+            });
+    }, [serviceId]);
+
     return (
         <div className="row no-gutters p-0">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
@@ -32,7 +46,11 @@ const OrderForm = () => {
                             />
                         </div>
                         <div className="form-group ">
-                            <input type="text" className="form-control " />
+                            <input
+                                type="text"
+                                className="form-control "
+                                value={title}
+                            />
                         </div>
 
                         <div className="form-group ">
@@ -69,7 +87,7 @@ const OrderForm = () => {
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark px-5">
+                        <button type="submit" className="btn btn-dark px-5">
                             Submit
                         </button>
                     </form>

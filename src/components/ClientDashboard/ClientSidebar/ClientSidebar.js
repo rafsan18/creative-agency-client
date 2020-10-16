@@ -2,12 +2,14 @@ import { faCommentDots, faListAlt } from "@fortawesome/free-regular-svg-icons";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import logo from "../../../images/logos/logo.png";
 import "./ClientSidebar.css";
 
 const ClientSidebar = () => {
     const location = useLocation();
+    const { serviceId } = useParams();
+
     return (
         <div className="client-sidebar">
             <img src={logo} alt="Creative Agency" />
@@ -15,11 +17,12 @@ const ClientSidebar = () => {
                 <li>
                     <Link
                         className={` ${
-                            location.pathname === "/clientDashboard/orderForm"
+                            location.pathname ===
+                            `/clientDashboard/orderFormFor/${serviceId}`
                                 ? "text-success"
                                 : ""
                         } client-side-link`}
-                        to="/clientDashboard/orderForm"
+                        to={`/clientDashboard/orderFormFor/${serviceId}`}
                     >
                         <FontAwesomeIcon icon={faShoppingCart} />
                         &nbsp;&nbsp;Order
