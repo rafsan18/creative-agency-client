@@ -10,6 +10,7 @@ import MakeAdmin from "./components/AdminDashboard/MakeAdmin/MakeAdmin";
 import OrderForm from "./components/ClientDashboard/OrderForm/OrderForm";
 import OrderedList from "./components/ClientDashboard/OrderedList/OrderedList";
 import ReviewForm from "./components/ClientDashboard/ReviewForm/ReviewForm";
+import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 
 export const UserContext = createContext();
 
@@ -38,9 +39,9 @@ function App() {
                     <Route path="/adminDashboard/makeAdmin">
                         <MakeAdmin />
                     </Route>
-                    <Route path="/clientDashboard/orderFormFor/:serviceId">
+                    <PrivateRoute path="/clientDashboard/orderFormFor/:serviceId">
                         <OrderForm />
-                    </Route>
+                    </PrivateRoute>
                     <Route path="/clientDashboard/orderedList">
                         <OrderedList />
                     </Route>

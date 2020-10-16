@@ -3,7 +3,7 @@ import AdminSidebar from "../AdminSidebar/AdminSidebar";
 
 const MakeAdmin = () => {
     return (
-        <div className="row no-gutters p-0 container-fluid">
+        <div className="row    container-fluid">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
                 <AdminSidebar></AdminSidebar>
             </div>
@@ -15,7 +15,7 @@ const MakeAdmin = () => {
                 >
                     <form>
                         <div
-                            className="row no-gutters p-4 mx-5 mt-5 bg-white "
+                            className="row    p-4 mx-5 mt-5 bg-white "
                             style={{ borderRadius: "15px" }}
                         >
                             <div className="col-xl-7 col-md-6 col-sm-12 col-12 ">

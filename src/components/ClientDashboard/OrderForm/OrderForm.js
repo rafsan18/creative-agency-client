@@ -1,14 +1,42 @@
 import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { UserContext } from "../../../App";
 import ClientSidebar from "../ClientSidebar/ClientSidebar";
+import { useForm } from "react-hook-form";
 
 const OrderForm = () => {
     const [selectedService, setSelectedService] = useState({});
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [orderInfo, setOrderInfo] = useState({});
+    const [isOrderSubmitted, setIsOrderSubmitted] = useState(false);
+
     const { serviceId } = useParams();
+    const history = useHistory();
 
     const { _id, title, description, image } = selectedService;
+    const { name, email, img } = loggedInUser;
+
+    const { register, handleSubmit, watch, errors } = useForm();
+    const onSubmit = (data) => {
+        data.image = image;
+        data.description = description;
+        data.status = "Pending";
+
+        fetch("http://localhost:5000/addOrder", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then((success) => {
+                console.log(success);
+                if (success) {
+                    setIsOrderSubmitted(true);
+                }
+            });
+    };
 
     useEffect(() => {
         fetch(`http://localhost:5000/service/${serviceId}`)
@@ -18,31 +46,64 @@ const OrderForm = () => {
             });
     }, [serviceId]);
 
+    // const handleBlur = (e) => {
+    //     const newOrderInfo = { ...orderInfo };
+    //     newOrderInfo[e.target.name] = e.target.value;
+    //     setOrderInfo(newOrderInfo);
+    // };
+
     return (
-        <div className="row no-gutters p-0">
+        <div className="row   ">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
                 <ClientSidebar></ClientSidebar>
             </div>
 
             <div className="col-xl-10 col-md-9 col-sm-8 col-12">
-                <h3 className="my-4 mx-5">Order</h3>
+                <div className="d-flex justify-content-between">
+                    <h3 className="m-4">Order</h3>
+                    <div className="d-flex">
+                        <h6 className=" my-4 mx-4">{name}</h6>
+                        <img
+                            className="  my-4 mx-4"
+                            style={{
+                                width: "30px",
+                                height: "30px",
+                                borderRadius: "50%",
+                            }}
+                            src={img}
+                            alt=""
+                        />
+                    </div>
+                </div>
+
                 <div
                     className="bg-light py-2 rounded px-4 "
                     style={{ height: "89vh" }}
                 >
-                    <form className="mt-5 w-50 ">
+                    <form
+                        className="mt-5 w-50 "
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
                         <div className="form-group ">
                             <input
                                 type="text"
                                 className="form-control "
                                 placeholder="Your name / Company's name"
+                                defaultValue={name}
+                                name="name"
+                                ref={register({ required: true })}
                             />
+                            {errors.exampleRequired && (
+                                <span>This field is required</span>
+                            )}
                         </div>
                         <div className="form-group ">
                             <input
                                 type="email"
                                 className="form-control "
-                                placeholder="Your email address"
+                                value={email}
+                                name="email"
+                                ref={register}
                             />
                         </div>
                         <div className="form-group ">
@@ -50,6 +111,8 @@ const OrderForm = () => {
                                 type="text"
                                 className="form-control "
                                 value={title}
+                                name="title"
+                                ref={register}
                             />
                         </div>
 
@@ -58,7 +121,12 @@ const OrderForm = () => {
                                 className="form-control "
                                 rows="5"
                                 placeholder="Project Details"
+                                name="clientBrief"
+                                ref={register({ required: true })}
                             ></textarea>
+                            {errors.exampleRequired && (
+                                <span>This field is required</span>
+                            )}
                         </div>
 
                         <div className="row">
@@ -67,6 +135,9 @@ const OrderForm = () => {
                                     <input
                                         type="text"
                                         className="form-control "
+                                        placeholder="price"
+                                        name="price"
+                                        ref={register}
                                     />
                                 </div>
                             </div>
@@ -76,7 +147,6 @@ const OrderForm = () => {
                                         <input
                                             type="file"
                                             className="form-control-file "
-                                            placeholder="Price"
                                         />
                                         <FontAwesomeIcon
                                             icon={faCloudUploadAlt}
@@ -87,6 +157,13 @@ const OrderForm = () => {
                                 </div>
                             </div>
                         </div>
+                        {isOrderSubmitted ? (
+                            <small className="text-success">
+                                Your Order Submitted successfully
+                            </small>
+                        ) : null}
+
+                        <br />
                         <button type="submit" className="btn btn-dark px-5">
                             Submit
                         </button>

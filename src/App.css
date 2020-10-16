@@ -1,3 +1,7 @@
 .text-brand {
     color: #7ab259;
 }
+
+body {
+    overflow-x: hidden;
+}

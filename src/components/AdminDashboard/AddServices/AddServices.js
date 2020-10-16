@@ -41,7 +41,7 @@ const AddServices = () => {
     };
 
     return (
-        <div className="row no-gutters container-fluid p-0">
+        <div className="row  container-fluid p-0">
             <div className=" col-xl-2 col-md-3 col-sm-4 col-12">
                 <AdminSidebar></AdminSidebar>
             </div>
@@ -54,7 +54,7 @@ const AddServices = () => {
                 >
                     <form onSubmit={handleSubmit}>
                         <div
-                            className="row no-gutters p-4 mx-5 mt-5 bg-white "
+                            className="row    p-4 mx-5 mt-5 bg-white "
                             style={{ borderRadius: "15px" }}
                         >
                             <div className="col-xl-7 col-md-6 col-sm-12 col-12 ">
