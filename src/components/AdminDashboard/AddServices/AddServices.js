@@ -65,7 +65,7 @@ const AddServices = () => {
                                     <input
                                         type="text"
                                         name="title"
-                                        className="form-control"
+                                        className="form-control "
                                         placeholder="Enter title"
                                         onBlur={handleBlur}
                                     />
