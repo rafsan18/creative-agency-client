@@ -41,7 +41,7 @@ const AddServices = () => {
     };
 
     return (
-        <div className="row  container-fluid p-0">
+        <div className="row  ">
             <div className=" col-xl-2 col-md-3 col-sm-4 col-12">
                 <AdminSidebar></AdminSidebar>
             </div>

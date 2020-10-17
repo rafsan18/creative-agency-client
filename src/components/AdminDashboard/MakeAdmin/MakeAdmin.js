@@ -3,7 +3,7 @@ import AdminSidebar from "../AdminSidebar/AdminSidebar";
 
 const MakeAdmin = () => {
     return (
-        <div className="row    container-fluid">
+        <div className="row    ">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
                 <AdminSidebar></AdminSidebar>
             </div>

@@ -1,5 +1,3 @@
-import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { UserContext } from "../../../App";
@@ -9,7 +7,6 @@ import { useForm } from "react-hook-form";
 const OrderForm = () => {
     const [selectedService, setSelectedService] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [orderInfo, setOrderInfo] = useState({});
     const [isOrderSubmitted, setIsOrderSubmitted] = useState(false);
 
     const { serviceId } = useParams();

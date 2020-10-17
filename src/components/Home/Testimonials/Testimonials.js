@@ -6,11 +6,6 @@ import Testimonial from "../Testimonial/Testimonial";
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
-    // fetch("http://localhost:5000/addReview", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(clientsInfo),
-    // });
 
     useEffect(() => {
         fetch("http://localhost:5000/reviews")
