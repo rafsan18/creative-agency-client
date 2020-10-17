@@ -9,7 +9,13 @@ const TableData = ({ order }) => {
             <td>{email}</td>
             <td>{title}</td>
             <td>{clientBrief}</td>
-            <td>{status}</td>
+            <td>
+                <select name="status">
+                    <option value="volvo">{status}</option>
+                    <option value="saab">On Going</option>
+                    <option value="opel">Done</option>
+                </select>
+            </td>
         </tr>
     );
 };

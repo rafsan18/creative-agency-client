@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import nash from "../../../images/nash.png";
-import miriam from "../../../images/miriam.png";
-import bria from "../../../images/bria.png";
 import Testimonial from "../Testimonial/Testimonial";
 
 const Testimonials = () => {

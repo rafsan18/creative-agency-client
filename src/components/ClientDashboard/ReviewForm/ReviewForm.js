@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ClientSidebar from "../ClientSidebar/ClientSidebar";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../../App";
 
 const ReviewForm = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [clientReview, setClientReview] = useState([]);
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
         data.img = loggedInUser.img;

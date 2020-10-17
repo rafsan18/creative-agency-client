@@ -30,24 +30,24 @@ function App() {
                     <Route path="/login">
                         <Login />
                     </Route>
-                    <Route path="/adminDashboard/serviceList">
+                    <PrivateRoute path="/adminDashboard/serviceList">
                         <ServiceList />
-                    </Route>
-                    <Route path="/adminDashboard/addService">
+                    </PrivateRoute>
+                    <PrivateRoute path="/adminDashboard/addService">
                         <AddServices />
-                    </Route>
-                    <Route path="/adminDashboard/makeAdmin">
+                    </PrivateRoute>
+                    <PrivateRoute path="/adminDashboard/makeAdmin">
                         <MakeAdmin />
-                    </Route>
+                    </PrivateRoute>
                     <PrivateRoute path="/clientDashboard/orderFormFor/:serviceId">
                         <OrderForm />
                     </PrivateRoute>
-                    <Route path="/clientDashboard/orderedList">
+                    <PrivateRoute path="/clientDashboard/orderedList">
                         <OrderedList />
-                    </Route>
-                    <Route path="/clientDashboard/reviewForm">
+                    </PrivateRoute>
+                    <PrivateRoute path="/clientDashboard/reviewForm">
                         <ReviewForm />
-                    </Route>
+                    </PrivateRoute>
                     <Route path="*">
                         <NotMatch />
                     </Route>

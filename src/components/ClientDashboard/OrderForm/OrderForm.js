@@ -7,12 +7,11 @@ import { useForm } from "react-hook-form";
 const OrderForm = () => {
     const [selectedService, setSelectedService] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [isOrderSubmitted, setIsOrderSubmitted] = useState(false);
 
     const { serviceId } = useParams();
     const history = useHistory();
 
-    const { _id, title, description, image } = selectedService;
+    const { title, description, image } = selectedService;
     const { name, email, img } = loggedInUser;
 
     const { register, handleSubmit, watch, errors } = useForm();
@@ -37,17 +36,14 @@ const OrderForm = () => {
         })
             .then((res) => res.json())
             .then((success) => {
-                console.log(success);
-                if (success) {
-                    setIsOrderSubmitted(true);
-                }
+                //do sth
             });
     };
 
     return (
         <div className="row   ">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
-                <ClientSidebar></ClientSidebar>
+                <ClientSidebar />
             </div>
 
             <div className="col-xl-10 col-md-9 col-sm-8 col-12">
@@ -147,12 +143,6 @@ const OrderForm = () => {
                                     </label>
                                 </div>
                             </div> */}
-
-                        {isOrderSubmitted ? (
-                            <small className="text-success">
-                                Your Order Submitted successfully
-                            </small>
-                        ) : null}
 
                         <br />
                         <button type="submit" className="btn btn-dark px-5">

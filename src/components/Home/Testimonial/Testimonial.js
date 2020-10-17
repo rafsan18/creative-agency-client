@@ -4,12 +4,16 @@ const Testimonial = ({ review }) => {
     const { name, designation, comment, img } = review;
 
     return (
-        <div className="col-md-4 ">
+        <div className="col-md-4 mb-3 ">
             <div className="border px-3">
                 <div className="row p-4">
                     <img
                         className="img-fluid  "
-                        style={{ height: "70px" }}
+                        style={{
+                            height: "70px",
+                            width: "70px",
+                            borderRadius: "50%",
+                        }}
                         src={img}
                         alt=""
                     />
