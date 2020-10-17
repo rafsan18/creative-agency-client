@@ -3,6 +3,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+
 import logo from "../../../images/logos/logo.png";
 import "./ClientSidebar.css";
 
