@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminSidebar from "../AdminSidebar/AdminSidebar";
 
 const MakeAdmin = () => {
+    const [admin, setAdmin] = useState({});
+    const handleBlur = (e) => {
+        const newAdmin = { ...admin };
+        newAdmin[e.target.name] = e.target.value;
+        setAdmin(newAdmin);
+    };
+
+    const handleSubmit = () => {
+        fetch("http://localhost:5000/addAdmin", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(admin),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     return (
-        <div className="row    ">
+        <div className="row">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
                 <AdminSidebar></AdminSidebar>
             </div>
@@ -28,6 +50,7 @@ const MakeAdmin = () => {
                                         name="email"
                                         className="form-control "
                                         placeholder="Enter Email"
+                                        onBlur={handleBlur}
                                     />
                                 </div>
                             </div>
@@ -39,6 +62,7 @@ const MakeAdmin = () => {
                                 <button
                                     className="btn btn-success submit-btn px-4 ml-1 "
                                     type="submit"
+                                    onClick={handleSubmit}
                                 >
                                     Submit
                                 </button>
