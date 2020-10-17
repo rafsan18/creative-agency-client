@@ -17,7 +17,7 @@ const OrderForm = () => {
     const { register, handleSubmit, watch, errors } = useForm();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${serviceId}`)
+        fetch(`https://warm-forest-22273.herokuapp.com/service/${serviceId}`)
             .then((res) => res.json())
             .then((data) => {
                 setSelectedService(data);
@@ -29,7 +29,7 @@ const OrderForm = () => {
         data.description = description;
         data.status = "Pending";
 
-        fetch("http://localhost:5000/addOrder", {
+        fetch("https://warm-forest-22273.herokuapp.com/addOrder", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

@@ -11,7 +11,7 @@ const ReviewForm = () => {
     const onSubmit = (data) => {
         data.img = loggedInUser.img;
 
-        fetch("http://localhost:5000/addReview", {
+        fetch("https://warm-forest-22273.herokuapp.com/addReview", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),

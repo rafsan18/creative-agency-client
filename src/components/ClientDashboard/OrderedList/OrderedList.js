@@ -10,13 +10,16 @@ const OrderedList = () => {
     const { name, img, email } = loggedInUser;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orderList?email=${email}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${sessionStorage.getItem("token")}`,
-            },
-        })
+        fetch(
+            `https://warm-forest-22273.herokuapp.com/orderList?email=${email}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                },
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 setOrderedServices(data);

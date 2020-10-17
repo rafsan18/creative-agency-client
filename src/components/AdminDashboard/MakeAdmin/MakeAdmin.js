@@ -10,7 +10,7 @@ const MakeAdmin = () => {
     };
 
     const handleSubmit = () => {
-        fetch("http://localhost:5000/addAdmin", {
+        fetch("https://warm-forest-22273.herokuapp.com/addAdmin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(admin),

@@ -9,7 +9,7 @@ const ServiceList = () => {
     const [orderList, setOrderList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/fullOrderedList", {
+        fetch("https://warm-forest-22273.herokuapp.com/fullOrderedList", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: loggedInUser.email }),
