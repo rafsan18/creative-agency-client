@@ -1,7 +1,7 @@
 import React from "react";
 
-const Testimonial = ({ clientInfo }) => {
-    const { name, designation, comment, img } = clientInfo;
+const Testimonial = ({ review }) => {
+    const { name, designation, comment, img } = review;
 
     return (
         <div className="col-md-4 ">

@@ -21,9 +21,7 @@ const OrderedList = () => {
             .then((data) => {
                 setOrderedServices(data);
             });
-    }, []);
-
-    console.log(orderedServices);
+    }, [email]);
 
     return (
         <div className="row   ">

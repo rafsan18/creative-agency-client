@@ -19,6 +19,15 @@ const OrderForm = () => {
     const { name, email, img } = loggedInUser;
 
     const { register, handleSubmit, watch, errors } = useForm();
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/service/${serviceId}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setSelectedService(data);
+            });
+    }, [serviceId]);
+
     const onSubmit = (data) => {
         data.image = image;
         data.description = description;
@@ -37,20 +46,6 @@ const OrderForm = () => {
                 }
             });
     };
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/service/${serviceId}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setSelectedService(data);
-            });
-    }, [serviceId]);
-
-    // const handleBlur = (e) => {
-    //     const newOrderInfo = { ...orderInfo };
-    //     newOrderInfo[e.target.name] = e.target.value;
-    //     setOrderInfo(newOrderInfo);
-    // };
 
     return (
         <div className="row   ">
@@ -128,20 +123,19 @@ const OrderForm = () => {
                                 <span>This field is required</span>
                             )}
                         </div>
+                        <div className="form-group  ">
+                            <input
+                                type="text"
+                                className="form-control "
+                                placeholder="price"
+                                name="price"
+                                ref={register}
+                            />
+                        </div>
 
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="form-group  ">
-                                    <input
-                                        type="text"
-                                        className="form-control "
-                                        placeholder="price"
-                                        name="price"
-                                        ref={register}
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
+                        {/* <div className="row">
+                            <div className="col-md-6"></div> */}
+                        {/* <div className="col-md-6">
                                 <div className="form-group  ">
                                     <label className="upload-btn w-100 text-center">
                                         <input
@@ -155,8 +149,8 @@ const OrderForm = () => {
                                         Upload Project File
                                     </label>
                                 </div>
-                            </div>
-                        </div>
+                            </div> */}
+
                         {isOrderSubmitted ? (
                             <small className="text-success">
                                 Your Order Submitted successfully

@@ -1,48 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import nash from "../../../images/nash.png";
 import miriam from "../../../images/miriam.png";
 import bria from "../../../images/bria.png";
 import Testimonial from "../Testimonial/Testimonial";
 
-const clientsInfo = [
-    {
-        id: 101,
-        name: "Nash Patrik",
-        designation: "CEO, Manpol",
-        comment:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nemo nostrum aliquid quasi animi vel.",
-        img: nash,
-    },
-    {
-        id: 102,
-        name: "Miriam Barron",
-        designation: "CEO, Manpol",
-        comment:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nemo nostrum aliquid quasi animi vel.",
-        img: miriam,
-    },
-    {
-        id: 103,
-        name: "Bria Malone",
-        designation: "CEO, Manpol",
-        comment:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nemo nostrum aliquid quasi animi vel.",
-        img: bria,
-    },
-];
-
 const Testimonials = () => {
+    const [reviews, setReviews] = useState([]);
+    // fetch("http://localhost:5000/addReview", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(clientsInfo),
+    // });
+
+    useEffect(() => {
+        fetch("http://localhost:5000/reviews")
+            .then((res) => res.json())
+            .then((data) => setReviews(data));
+    }, []);
+
     return (
         <div>
             <h3 className="text-center my-5 py-5">
                 Clients <span className="text-brand">Feedback</span>{" "}
             </h3>
             <div className="row w-75  m-auto ">
-                {clientsInfo.map((clientInfo) => (
-                    <Testimonial
-                        key={clientInfo.id}
-                        clientInfo={clientInfo}
-                    ></Testimonial>
+                {reviews.map((review) => (
+                    <Testimonial key={review._id} review={review}></Testimonial>
                 ))}
             </div>
         </div>
