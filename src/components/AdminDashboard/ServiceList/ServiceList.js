@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../../App";
 import AdminSidebar from "../AdminSidebar/AdminSidebar";
 import "./ServiceList.css";
+import TableData from "./TableData";
 
 const ServiceList = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [orderList, setOrderList] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/fullOrderedList", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: loggedInUser.email }),
+        })
+            .then((res) => res.json())
+            .then((data) => setOrderList(data));
+    }, [loggedInUser.email]);
+
     return (
         <div className="row">
             <div className="col-xl-2 col-md-3 col-sm-4 col-12">
@@ -26,15 +41,12 @@ const ServiceList = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <td>Becky Peckerman</td>
-                                <td>peckerman@gmail.com</td>
-                                <td>Web Development</td>
-                                <td>
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Magni ut error repudiandae
-                                    animi culpa porro!
-                                </td>
-                                <td>pending</td>
+                                {orderList.map((order) => (
+                                    <TableData
+                                        key={order._id}
+                                        order={order}
+                                    ></TableData>
+                                ))}
                             </tbody>
                         </table>
                     </div>

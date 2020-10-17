@@ -42,6 +42,19 @@ const ClientSidebar = () => {
                         &nbsp;&nbsp; Ordered List
                     </Link>
                 </li>
+                <li>
+                    <Link
+                        className={` ${
+                            location.pathname === "/adminDashboard/serviceList"
+                                ? "text-success"
+                                : ""
+                        } client-side-link`}
+                        to="/adminDashboard/serviceList"
+                    >
+                        <FontAwesomeIcon icon={faListAlt} />
+                        &nbsp;&nbsp; Admin
+                    </Link>
+                </li>
 
                 <li>
                     <Link
