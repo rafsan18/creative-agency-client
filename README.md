@@ -1,4 +1,4 @@
-This project was bootstrapped with Create React App.
+# Creative-Agency-Client
 
 ## Creative Agency
 
@@ -18,6 +18,7 @@ Admin Panel:
 -   Only admin can access this panel.
 -   A admin can see a complete list of placed order to their agency.
 -   Admin can create a new service offered by the agency.
+-   Admin can upload image of the service which will be saved in MongoDB.
 -   Admin can add a new admin.
 
 Technologies Used:
