@@ -1,6 +1,6 @@
 # Creative-Agency-Client
 
-## Creative Agency
+## Creative Agency | [Live link](https://creative-agency-42bae.web.app/) | [Server-Side Code](https://github.com/rafsan18/creative-agency-server)
 
 A full-stack website of a dummy agency that provides creative services. It has both client and admin panel.
 \
@@ -44,6 +44,3 @@ Technologies Used:
     -   Express- fileUpload
     -   Firebase admin
     -   fs-extra
-
--   [Live link](https://creative-agency-42bae.web.app/)
--   [Server-Side Code](https://github.com/rafsan18/creative-agency-server)
