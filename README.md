@@ -45,4 +45,4 @@ Technologies Used:
     -   fs-extra
 
 -   [Live link](https://creative-agency-42bae.web.app/)
--   [Server](https://github.com/rafsan18/creative-agency-server)
+-   [Server-Side Code](https://github.com/rafsan18/creative-agency-server)
