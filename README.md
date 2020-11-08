@@ -5,7 +5,7 @@
 A full-stack website of a dummy agency that provides creative services. It has both client and admin panel.
 \
 \
-Client Panel:
+Client Dashboard:
 
 -   Client can select service.
 -   Client need to logged-in using G-mail in order to place the order.
@@ -13,7 +13,7 @@ Client Panel:
 -   Client also can see the list of their previously placed order.
 -   Client can also post their valuable review which will be displayed in the home page.
 
-Admin Panel:
+Admin Dashboard:
 
 -   Only admin can access this panel.
 -   A admin can see a complete list of placed order to their agency.
